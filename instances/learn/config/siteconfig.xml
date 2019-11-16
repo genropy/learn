@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
 <GenRoBag>
 	<wsgi mainpackage="lrn"/>
+	<gui css_theme='mimi'/>
 </GenRoBag>
