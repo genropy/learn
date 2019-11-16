@@ -13,7 +13,7 @@ Le tabelle principali identificate sono
 - unit_tree
 - requirement
 - learn_history
-- unit_comments
+- unit_comment
 
 ## Tabella student
 

@@ -1,1 +1,0 @@
-# Tabella studente
