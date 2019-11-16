@@ -22,10 +22,12 @@ Chiave primaria **id** e gli altri campi saranno oggetto di separata discussione
 Campi:
 
 - id
-- cognome
-- nome
-- nicknema
-- citta
+- name
+- surname
+- nickname
+- country
+- city
+- user_id
 - i rimanenti saranno oggetto di separata discussione
 
 ## Tabella unit
