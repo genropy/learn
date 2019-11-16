@@ -13,4 +13,5 @@ utilizzata con lo scopo di insegnare proprio Genropy.
 ## Organizzazione del lavoro
 
 Nella cartella Discussioni verranno salvati come documenti i riassunti
-delle discussioni tenute nel gruppo [Learn Genropy](t.me/learngenropy) su telegram
+delle discussioni tenute nel gruppo [Learn Genropy](https://t.me/learngenropy) su telegram.
+
