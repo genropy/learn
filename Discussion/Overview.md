@@ -12,7 +12,7 @@ Le tabelle principali identificate sono
 - unit
 - unit_tree
 - requirement
-- learn_history
+- history
 - unit_comment
 
 ## Tabella student
@@ -70,7 +70,7 @@ Campi:
 - unit_id
 - required_unit_id
 
-## Tabella learn_history
+## Tabella history
 
 La tabella serve a conoscere le unità che lo studente ha svolto.
 
