@@ -102,3 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+instances/learn/site/_static
