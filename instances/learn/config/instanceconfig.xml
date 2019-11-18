@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <GenRoBag>
-	<db dbname="learn" implementation="sqlite"/>
+	<db dbname="learn"/>
 
 	<packages>
 		<gnrcore_sys pkgcode="gnrcore:sys"/>
