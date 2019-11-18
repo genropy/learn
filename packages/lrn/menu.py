@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
 def config(root,application=None):
-    auto = root.branch(u"auto")
-    auto.thpage(u"!!Student", table="lrn.student")
+    auto = root.branch("!![en]Learn")
+    auto.thpage("!![en]Student", table="lrn.student")
 

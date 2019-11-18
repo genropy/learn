@@ -12,4 +12,15 @@ class Table(object):
                     name_long='!![en]Nickname', 
                     name_short='!![en]Nick')        
         tbl.column('email', name_long='Email')
+        tbl.column('provincia',size='2', name_long='!![it]Provincia'
+                    ).relation('glbl.provincia.sigla', 
+                                relation_name='studenti',
+                                mode='foreignkey', 
+                                onDelete='raise')
+        tbl.column('comune_id',size='22', name_long='!![it]Comune'
+                    ).relation('glbl.comune.id', 
+                                relation_name='studenti',
+                                mode='foreignkey', 
+                                onDelete='raise')
+
         tbl.formulaColumn('name_full',"$name || ' ' || $surname")

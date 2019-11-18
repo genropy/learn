@@ -5,6 +5,7 @@
 	<packages>
 		<gnrcore_sys pkgcode="gnrcore:sys"/>
 		<gnrcore_adm pkgcode="gnrcore:adm"/>
+		<gnr_it_glbl pkgcode="gnr_it:glbl"/>
 		<lrn pkgcode="lrn"/>
 	</packages>
 

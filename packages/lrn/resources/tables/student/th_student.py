@@ -11,6 +11,8 @@ class View(BaseComponent):
         r.fieldcell('nickname')
         r.fieldcell('name')
         r.fieldcell('surname')
+        r.fieldcell('provincia')
+        r.fieldcell('comune_id')
         r.fieldcell('email')
 
     def th_order(self):
@@ -24,11 +26,15 @@ class View(BaseComponent):
 class Form(BaseComponent):
 
     def th_form(self, form):
-        pane = form.record
+        pane = form.record 
         fb = pane.formbuilder(cols=2, border_spacing='4px')
         fb.field('nickname')
         fb.field('name')
         fb.field('surname')
+        fb.field('provincia',hasDownArrow=False)
+        #fb.dbSelect(value='^.provincia',dbtable='glbl.provincia',lbl='Provincia',hasDownArrow=False)
+        fb.field('comune_id',condition='$sigla_provincia=:pr',
+                    condition_pr='=.provincia')
         fb.field('email')
 
 
