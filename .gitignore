@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 instances/learn/site/_static
 instances/learn/site/data/_users
+instances/learn/site/*
