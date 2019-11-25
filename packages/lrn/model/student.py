@@ -22,5 +22,5 @@ class Table(object):
                                 relation_name='studenti',
                                 mode='foreignkey', 
                                 onDelete='raise')
-
+        tbl.column('photo_url',dtype='P', name_long='Photo')
         tbl.formulaColumn('name_full',"$name || ' ' || $surname")

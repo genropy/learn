@@ -37,6 +37,12 @@ class Form(BaseComponent):
                     condition_pr='=.provincia')
         fb.field('email')
 
+        fb.img(src='^.photo_url',
+                crop_height='100px',crop_width='100px',margin='5px',
+                crop_border='2px dotted silver',crop_rounded=6,edit=True,
+                placeholder=True,
+                upload_folder='site:students/avatars',
+                upload_filename='=#FORM.record.nickname')
 
     def th_options(self):
         return dict(dialog_height='400px', dialog_width='600px')
