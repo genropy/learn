@@ -12,15 +12,19 @@ class Table(object):
                     name_long='!![en]Nickname', 
                     name_short='!![en]Nick')        
         tbl.column('email', name_long='Email')
-        tbl.column('provincia',size='2', name_long='!![it]Provincia'
-                    ).relation('glbl.provincia.sigla', 
-                                relation_name='studenti',
-                                mode='foreignkey', 
-                                onDelete='raise')
-        tbl.column('comune_id',size='22', name_long='!![it]Comune'
-                    ).relation('glbl.comune.id', 
-                                relation_name='studenti',
-                                mode='foreignkey', 
-                                onDelete='raise')
+        
+        tbl.column('country', name_long='!![en]Country')
+
+        tbl.column('position', name_long='!![en]Geocode')
+        tbl.column('locality', name_long='!![en]Locality')
+        tbl.column('full_address', name_long='!![en]Full address')
+
         tbl.column('photo_url',dtype='P', name_long='Photo')
+
+        tbl.column('user_id',size='22', group='_', name_long='User'
+                    ).relation('adm.user.id',one_one=True, 
+                         relation_name='student', 
+                         mode='foreignkey', onDelete='raise')
+
+
         tbl.formulaColumn('name_full',"$name || ' ' || $surname")

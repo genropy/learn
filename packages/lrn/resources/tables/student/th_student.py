@@ -11,8 +11,6 @@ class View(BaseComponent):
         r.fieldcell('nickname')
         r.fieldcell('name')
         r.fieldcell('surname')
-        r.fieldcell('provincia')
-        r.fieldcell('comune_id')
         r.fieldcell('email')
 
     def th_order(self):
@@ -27,22 +25,34 @@ class Form(BaseComponent):
 
     def th_form(self, form):
         pane = form.record 
-        fb = pane.formbuilder(cols=2, border_spacing='4px')
+        fb = pane.formbuilder(cols=1,fld_width='30em',
+                            border_spacing='4px',
+                            margin='10px')
         fb.field('nickname')
         fb.field('name')
         fb.field('surname')
-        fb.field('provincia',hasDownArrow=False)
-        #fb.dbSelect(value='^.provincia',dbtable='glbl.provincia',lbl='Provincia',hasDownArrow=False)
-        fb.field('comune_id',condition='$sigla_provincia=:pr',
-                    condition_pr='=.provincia')
         fb.field('email')
+        fb.field('full_address',
+                width='50em',
+                selected_locality='.locality',
+                selected_country='.country',
+                selected_position='.position',
+                tag='geoCoderField')
+        fb.field('locality')
+        fb.field('country')
+        fb.field('position')
 
         fb.img(src='^.photo_url',
-                crop_height='100px',crop_width='100px',margin='5px',
-                crop_border='2px dotted silver',crop_rounded=6,edit=True,
+                crop_height='100px',
+                crop_width='100px',
+                margin='5px',
+                crop_border='2px dotted silver',
+                crop_rounded=6,edit=True,
                 placeholder=True,
                 upload_folder='site:students/avatars',
                 upload_filename='=#FORM.record.nickname')
+        
+
 
     def th_options(self):
         return dict(dialog_height='400px', dialog_width='600px')
