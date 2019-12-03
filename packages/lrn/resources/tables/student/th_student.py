@@ -19,19 +19,15 @@ class View(BaseComponent):
     def th_query(self):
         return dict(column='nickname', op='contains', val='')
 
-
-
 class Form(BaseComponent):
-
     def th_form(self, form):
         pane = form.record 
-        fb = pane.formbuilder(cols=1,fld_width='30em',
-                            border_spacing='4px',
+        fb = pane.formbuilder(cols=1,border_spacing='4px',
                             margin='10px')
         fb.field('nickname')
         fb.field('name')
         fb.field('surname')
-        fb.field('email')
+        fb.field('email',width='30em')
         fb.field('full_address',
                 width='50em',
                 selected_locality='.locality',
