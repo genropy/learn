@@ -2,16 +2,8 @@
 
 class Table(object):
 
-    def trigger_onUpdated(self,record,
-                          old_record=None):
-        if old_record['status'] == 'wait' \
-            and record['status'] == 'conf':
-            tblstudent = self.db.table('lrn.student')
-            newstudent = tblstudent.newrecord(
-                name = record['firstname'],
-                surname = record['lastname'],
-                email = record['email'],
-                nickname = record['username'],
-                user_id = record['id']
-            )
-            tblstudent.insert(newstudent)
+    def trigger_onUpdating(self,record,old_record=None):
+        if old_record['status'] != 'conf' and record['status'] == 'conf':
+            group_code = self.db.table('adm.group').sysRecord('STUDENT')['code']
+            record['group_code'] = group_code
+            self.db.table('lrn.student').createStudent(record)

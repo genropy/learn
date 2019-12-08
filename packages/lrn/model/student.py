@@ -28,3 +28,16 @@ class Table(object):
 
 
         tbl.formulaColumn('name_full',"$name || ' ' || $surname")
+    
+    def createStudent(self,user_record):
+        if self.checkDuplicate(user_id=user_record['id']):
+            #existing student with the same user_id
+            return
+        newstudent = self.newrecord(
+            name = user_record['firstname'],
+            surname = user_record['lastname'],
+            email = user_record['email'],
+            nickname = user_record['username'],
+            user_id = user_record['id'],
+        )
+        self.insert(newstudent)
