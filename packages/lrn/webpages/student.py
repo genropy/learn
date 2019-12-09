@@ -42,7 +42,6 @@ class GnrCustomWebPage(object):
             default_user_id=self.avatar.user_id,
             default_main_topic_id='=main.faq.topic_id',
             delrow=False,
-            formResource='FormStudentPage',
             condition="""CASE WHEN :hpkey IS NULL THEN $main_topic_id IS NULL ELSE 
                         @main_topic_id.hierarchical_pkey LIKE :hpkey || '%%'
                         END
