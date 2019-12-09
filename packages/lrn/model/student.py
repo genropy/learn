@@ -19,9 +19,9 @@ class Table(object):
         tbl.column('locality', name_long='!![en]Locality')
         tbl.column('full_address', name_long='!![en]Full address')
 
-        tbl.column('photo_url',dtype='P', name_long='Photo')
+        tbl.column('photo_url',dtype='P', name_long='!![en]Photo')
 
-        tbl.column('user_id',size='22', group='_', name_long='User'
+        tbl.column('user_id',size='22', group='_', name_long='!![en]User',unique=True
                     ).relation('adm.user.id',one_one=True, 
                          relation_name='student', 
                          mode='foreignkey', onDelete='raise')

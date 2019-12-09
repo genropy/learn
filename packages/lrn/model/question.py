@@ -12,5 +12,8 @@ class Table(object):
                                 relation_name='questions', 
                                 mode='foreignkey', 
                                 onDelete='raise')
+        tbl.column('user_id',size='22', group='_', name_long='!![en]User'
+                    ).relation('adm.user.id', relation_name='myquestions', 
+                                mode='foreignkey', onDelete='raise')
 
         
