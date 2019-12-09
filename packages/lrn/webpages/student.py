@@ -53,12 +53,6 @@ class GnrCustomWebPage(object):
         pane.div('TO DO...')
 
     def mainToolbar(self,pane):
-        bar = pane.slotToolbar('2,pageTitle,*,newQuestion,10,logoutButton,2')
-        bar.newQuestion.button('!![en]New Question',
-                        action="""PUBLISH new_question = {subject:subject,description:description}""",
-                        ask=dict(title='!![en]Question',
-                                    fields=[dict(code='subject',lbl='!![en]Subject',validate_notnull=True),
-                                            dict(code='description',lbl='!![en]Question',tag='simpleTextArea')])
-                        )
+        bar = pane.slotToolbar('2,pageTitle,*,logoutButton,2')
         bar.pageTitle.div('^.current_student_nickname',font_weight='bold')
         bar.logoutButton.button('Logout',action='genro.logout();')
