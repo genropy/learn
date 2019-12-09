@@ -28,13 +28,15 @@ class GnrCustomWebPage(object):
 
     def faqPane(self,bc):
         bc.data('.topics',self.db.table('lrn.topic').getHierarchicalData())
-        left = bc.contentPane(region='left',width='30%',splitter=True)
+        left = bc.contentPane(region='left',width='20%',padding='10px',
+                                splitter=True,border_right='1px solid silver')
         left.tree(storepath='.topics.root',
                     labelAttribute='caption',
                     hideValues=True,
                     selected_hierarchical_pkey='.hierarchical_pkey',
                     selectedLabelClass='selectedTreeNode')
-        center = bc.contentPane(region='center').plainTableHandler(table='lrn.question',
+        center = bc.contentPane(region='center',margin_left='5px',
+                            border_left='1px solid silver').plainTableHandler(table='lrn.question',
             condition="@main_topic_id.hierarchical_pkey LIKE :hpkey || '%%'",
             condition_hpkey='^main.faq.hierarchical_pkey',
         )

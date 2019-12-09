@@ -8,8 +8,8 @@ class View(BaseComponent):
 
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('subject')
-        r.fieldcell('description')
+        r.fieldcell('subject',width='20em')
+        r.fieldcell('description',width='40em')
 
     def th_order(self):
         return 'subject'
