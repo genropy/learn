@@ -30,22 +30,36 @@ class GnrCustomWebPage(object):
         bc.data('.topics',self.db.table('lrn.topic').getHierarchicalData())
         left = bc.contentPane(region='left',width='20%',padding='10px',
                                 splitter=True,border_right='1px solid silver')
-        left.tree(storepath='.topics.root',
+        left.tree(storepath='.topics',
                     labelAttribute='caption',
                     hideValues=True,
+                    selected_pkey='.topic_id',
                     selected_hierarchical_pkey='.hierarchical_pkey',
                     selectedLabelClass='selectedTreeNode')
         center = bc.contentPane(region='center',margin_left='5px',
-                            border_left='1px solid silver').plainTableHandler(table='lrn.question',
-            condition="@main_topic_id.hierarchical_pkey LIKE :hpkey || '%%'",
-            condition_hpkey='^main.faq.hierarchical_pkey',
-        )
+                            border_left='1px solid silver')
+        center.dialogTableHandler(table='lrn.question',
+            default_user_id=self.avatar.user_id,
+            default_main_topic_id='=main.faq.topic_id',
+            delrow=False,
+            formResource='FormStudentPage',
+            condition="""CASE WHEN :hpkey IS NULL THEN $main_topic_id IS NULL ELSE 
+                        @main_topic_id.hierarchical_pkey LIKE :hpkey || '%%'
+                        END
+                        """,
+            condition_hpkey='^main.faq.hierarchical_pkey')
 
 
     def lessonsPane(self,pane):
-        pass
+        pane.div('TO DO...')
 
     def mainToolbar(self,pane):
-        bar = pane.slotToolbar('2,pageTitle,*,logoutButton,2')
+        bar = pane.slotToolbar('2,pageTitle,*,newQuestion,10,logoutButton,2')
+        bar.newQuestion.button('!![en]New Question',
+                        action="""PUBLISH new_question = {subject:subject,description:description}""",
+                        ask=dict(title='!![en]Question',
+                                    fields=[dict(code='subject',lbl='!![en]Subject',validate_notnull=True),
+                                            dict(code='description',lbl='!![en]Question',tag='simpleTextArea')])
+                        )
         bar.pageTitle.div('^.current_student_nickname',font_weight='bold')
         bar.logoutButton.button('Logout',action='genro.logout();')
