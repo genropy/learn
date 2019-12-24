@@ -6,11 +6,11 @@ class Table(object):
         tbl =  pkg.table('clip',pkey='id',name_long='!![en]Clip',name_plural='!![en]Clips',caption_field='title')
         self.sysFields(tbl)
         tbl.column('title', name_long='!![en]Title')
-        tbl.column('video_id', name_long='!![en]Video').relation('video.id', 
+        tbl.column('video_id', name_long='!![en]Video',batch_assign=True).relation('video.id', 
                                 relation_name='clips', 
                                 mode='foreignkey', 
                                 onDelete='raise')
-        tbl.column('topic_id', name_long='!![en]Topic').relation('topic.id', 
+        tbl.column('topic_id', name_long='!![en]Topic',batch_assign=True).relation('topic.id', 
                                 relation_name='clips', 
                                 mode='foreignkey', 
                                 onDelete='raise')
