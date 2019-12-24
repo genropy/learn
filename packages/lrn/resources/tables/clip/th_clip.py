@@ -10,9 +10,11 @@ class View(BaseComponent):
         r = struct.view().rows()
         r.fieldcell('title', edit=True, width='20em')
         r.fieldcell('video_id')
-        r.fieldcell('topic_id', edit=True)
+        r.fieldcell('topic_id', edit=True, width='20em')
         r.fieldcell('time_code', edit=True, width='6em')
-        r.fieldcell('keywords', edit=dict(tag='simpleTextArea', height='70px'))
+        r.fieldcell('keywords', edit=dict(tag='simpleTextArea', height='70px'), width='20em')
+        r.fieldcell('clip_url', format='autolink', width='20em')
+        
 
     def th_order(self):
         return 'title'

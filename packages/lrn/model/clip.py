@@ -18,4 +18,4 @@ class Table(object):
         tbl.column('keywords', name_ling='!![en]Keywords')
         tbl.aliasColumn('video_url', '@video_id.video_url')
         tbl.formulaColumn('timecode_parameter', """REPLACE(@video_id.@streaming_service.url_timecode_template, '#time_code', $time_code)""")
-        tbl.formulaColumn('clip_url', """$video_url||'&'||$timecode_parameter""")
+        tbl.formulaColumn('clip_url', """$video_url||'&'||$timecode_parameter""", name_long='URL')

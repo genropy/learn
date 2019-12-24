@@ -8,11 +8,12 @@ class View(BaseComponent):
 
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('title')
-        r.fieldcell('description')
-        r.fieldcell('streaming_service')
-        r.fieldcell('main_topic_id')
-        #r.fieldcell('url')
+        r.fieldcell('title',width='20em')
+        r.fieldcell('description',width='20em')
+        r.fieldcell('streaming_service', width='8em')
+        r.fieldcell('main_topic_id', width='15em')
+        r.fieldcell('external_id', width='8em')
+        r.fieldcell('video_url', format='autolink', width='20em')
 
     def th_order(self):
         return 'title'
