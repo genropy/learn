@@ -21,6 +21,13 @@ class View(BaseComponent):
     def th_query(self):
         return dict(column='title', op='contains', val='')
 
+    def th_queryBySample(self):
+        return dict(fields=[dict(field='keywords',lbl='!![en]Keywords',width='16em'),
+                            dict(field='title',lbl='!![en]Title',width='12em'),
+                            dict(field='@topic_id.description', lbl='Topic',width='14em')],
+                    cols=3, 
+                    isDefault=True)
+
 
 class Form(BaseComponent):
 

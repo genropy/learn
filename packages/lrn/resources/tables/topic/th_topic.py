@@ -18,6 +18,7 @@ class View(BaseComponent):
 
 
 
+
 class Form(BaseComponent):
 
     def th_form(self, form):
