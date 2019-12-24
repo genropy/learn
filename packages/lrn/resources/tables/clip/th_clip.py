@@ -12,7 +12,7 @@ class View(BaseComponent):
         r.fieldcell('video_id')
         r.fieldcell('topic_id', width='20em')
         r.fieldcell('time_code', width='6em')
-        r.fieldcell('keywords', edit=dict(tag='simpleTextArea', height='70px'), width='20em')
+        r.fieldcell('keywords', width='20em')
         r.fieldcell('clip_url', cell_format='autolink', width='20em')
 
     def th_order(self):
