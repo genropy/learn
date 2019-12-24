@@ -8,13 +8,12 @@ class View(BaseComponent):
 
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('title', edit=True, width='20em')
+        r.fieldcell('title', width='20em')
         r.fieldcell('video_id')
-        r.fieldcell('topic_id', edit=True, width='20em')
-        r.fieldcell('time_code', edit=True, width='6em')
+        r.fieldcell('topic_id', width='20em')
+        r.fieldcell('time_code', width='6em')
         r.fieldcell('keywords', edit=dict(tag='simpleTextArea', height='70px'), width='20em')
         r.fieldcell('clip_url', cell_format='autolink', width='20em')
-
 
     def th_order(self):
         return 'title'
@@ -29,6 +28,15 @@ class View(BaseComponent):
                     cols=3, 
                     isDefault=True)
 
+class ViewFromVideo(BaseComponent):
+    
+    def th_struct(self,struct):
+        r = struct.view().rows()
+        r.fieldcell('title', edit=True, width='20em')
+        r.fieldcell('topic_id', edit=True, width='20em')
+        r.fieldcell('time_code', edit=True, width='6em')
+        r.fieldcell('keywords', edit=dict(tag='simpleTextArea', height='70px'), width='20em')
+        r.fieldcell('clip_url', cell_format='autolink', width='20em')
 
 class Form(BaseComponent):
 
