@@ -16,4 +16,7 @@ class Table(object):
         tbl.column('external_id', name_long='!![en]External id')
         tbl.aliasColumn('host_url', '@streaming_service.host_url')
         tbl.formulaColumn('video_parameter', """REPLACE(@streaming_service.url_video_template, '#external_id', $external_id)""")
+        tbl.formulaColumn('video_embedded_parameter', """REPLACE(@streaming_service.url_embed_template, '#external_id', $external_id)""")
+
         tbl.formulaColumn('video_url', """$host_url||$video_parameter""", name_long='URL')
+        tbl.formulaColumn('video_embedded_url', """$host_url||$video_embedded_parameter""", name_long='URL embedded')

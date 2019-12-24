@@ -8,3 +8,4 @@ class Table(object):
         tbl.column('host_url', name_long='Host url')
         tbl.column('url_video_template')
         tbl.column('url_timecode_template')
+        tbl.column('url_embed_template')
