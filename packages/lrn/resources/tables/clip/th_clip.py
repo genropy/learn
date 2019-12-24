@@ -13,7 +13,6 @@ class View(BaseComponent):
         r.fieldcell('topic_id', edit=True)
         r.fieldcell('time_code', edit=True, width='6em')
         r.fieldcell('keywords', edit=dict(tag='simpleTextArea', height='70px'))
-        r.fieldcell('url', edit=True, widht='30em')
 
     def th_order(self):
         return 'title'
@@ -40,9 +39,6 @@ class Form(BaseComponent):
         fb.field('time_code', width='5em')
         fb.field('topic_id', colspan=2, tag='hdbselect')
         fb.field('keywords' , colspan=2, tag='simpleTextArea', height='60px')
-        fb.field('url', colspan=2)
-        
-        
 
 
     def th_options(self):

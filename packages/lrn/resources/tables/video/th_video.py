@@ -12,7 +12,7 @@ class View(BaseComponent):
         r.fieldcell('description')
         r.fieldcell('streaming_service')
         r.fieldcell('main_topic_id')
-        r.fieldcell('url')
+        #r.fieldcell('url')
 
     def th_order(self):
         return 'title'
@@ -30,14 +30,16 @@ class Form(BaseComponent):
 
     def th_form(self, form):
         bc = form.center.borderContainer() 
-        top = bc.borderContainer(region='top',datapath='.record',height='100px')
+        top = bc.borderContainer(region='top',datapath='.record',height='150px')
 
-        fb = top.div(margin_right='20px', width='600px').formbuilder(cols=2, border_spacing='4px', width='100%', fld_width='100%', colswidth='auto')
+        fb = top.div(margin_right='20px', width='600px').formbuilder(cols=3, border_spacing='4px', width='100%', fld_width='100%', colswidth='auto')
         fb.field('title', colspan=2)
-        fb.field('description', colspan=2)
-        fb.field('streaming_service', tag='filteringSelect', values='Youtube,Vimeo')
-        fb.field('main_topic_id')
-        fb.field('url' , colspan=2)
+        fb.field('streaming_service')
+        fb.field('main_topic_id', colspan=2)
+        fb.field('external_id' )
+        fb.field('description', colspan=3, tag='simpleTextArea', height='70px')
+        
+        
         bc.contentPane(region='center').inlineTableHandler(relation='@clips')
 
     def th_options(self):
