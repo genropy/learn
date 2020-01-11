@@ -28,6 +28,13 @@ class View(BaseComponent):
                     cols=3, 
                     isDefault=True)
 
+    def th_top_barraSections(self,top):
+        top.slotToolbar('*,sections@video_id,*', 
+                        childname='superiore',
+                        gradient_from='#999', 
+                        gradient_to='#666', 
+                        _position='<bar')
+
 class ViewFromVideo(BaseComponent):
     
     def th_struct(self,struct):
