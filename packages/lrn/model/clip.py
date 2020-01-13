@@ -15,9 +15,6 @@ class Table(object):
                                 mode='foreignkey', 
                                 onDelete='raise')
         tbl.column('time_code', name_long='!![en]Timecode')
-        tbl.column('keywords', name_ling='!![en]Keywords')
-        tbl.column('video_legacy')
-
         tbl.aliasColumn('video_url', '@video_id.video_url')
         tbl.aliasColumn('video_embedded_url','@video_id.video_embedded_url')
         tbl.formulaColumn('timecode_parameter', """REPLACE(@video_id.@streaming_service.url_timecode_template, '#time_code', $time_code)""")

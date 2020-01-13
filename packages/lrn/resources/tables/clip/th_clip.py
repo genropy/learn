@@ -12,7 +12,6 @@ class View(BaseComponent):
         r.fieldcell('video_id')
         r.fieldcell('topic_id', width='20em')
         r.fieldcell('time_code', width='6em')
-        r.fieldcell('keywords', width='20em')
         r.fieldcell('clip_url', format_showlinks=True, width='20em')
 
     def th_order(self):
@@ -22,8 +21,7 @@ class View(BaseComponent):
         return dict(column='title', op='contains', val='')
 
     def th_queryBySample(self):
-        return dict(fields=[dict(field='keywords',lbl='!![en]Keywords',width='16em'),
-                            dict(field='title',lbl='!![en]Title',width='12em'),
+        return dict(fields=[dict(field='title',lbl='!![en]Title',width='12em'),
                             dict(field='@topic_id.description', lbl='Topic',width='14em')],
                     cols=3, 
                     isDefault=True)
@@ -42,7 +40,6 @@ class ViewFromVideo(BaseComponent):
         r.fieldcell('title', edit=True, width='20em')
         r.fieldcell('topic_id', edit=True, width='20em')
         r.fieldcell('time_code', edit=True, width='6em')
-        r.fieldcell('keywords', edit=dict(tag='simpleTextArea', height='70px'), width='20em')
         r.fieldcell('clip_url', cell_format='autolink', width='20em')
 
 class Form(BaseComponent):
@@ -55,7 +52,6 @@ class Form(BaseComponent):
         fb.field('video_id',)
         fb.field('time_code', width='5em')
         fb.field('topic_id', colspan=2, tag='hdbselect')
-        fb.field('keywords' , colspan=2, tag='simpleTextArea', height='60px')
         bc.contentPane(region='center').iframe(src='^.clip_embedded_url',
                     height='100%',width='100%',border='0',_virtual_column='$video_embedded_url')
     @public_method
