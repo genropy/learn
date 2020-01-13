@@ -11,6 +11,7 @@ class View(BaseComponent):
         r.fieldcell('title', width='20em')
         r.fieldcell('video_id')
         r.fieldcell('topic_id', width='20em', name='!![en]Main topic')
+        r.fieldcell('other_topics', width='20em',name='!![en]Other topics')
         r.fieldcell('time_code', width='6em')
         r.fieldcell('clip_url', format_showlinks=True, width='20em')
 
@@ -22,7 +23,8 @@ class View(BaseComponent):
 
     def th_queryBySample(self):
         return dict(fields=[dict(field='title',lbl='!![en]Title',width='12em'),
-                            dict(field='@topic_id.description', lbl='Topic',width='14em')],
+                            dict(field='@topic_id.description', lbl='Main Topic',width='14em'),
+                            dict(field='other_topics',lbl='!![en]Other topics',width='16em')],
                     cols=3, 
                     isDefault=True)
 

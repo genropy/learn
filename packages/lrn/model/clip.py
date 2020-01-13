@@ -17,5 +17,6 @@ class Table(object):
         tbl.column('time_code', name_long='!![en]Timecode')
         tbl.aliasColumn('video_url', '@video_id.video_url')
         tbl.aliasColumn('video_embedded_url','@video_id.video_embedded_url')
+        tbl.aliasColumn('other_topics','@clip_alias.@topic_id.description',name_long='!![en]Other topics')
         tbl.formulaColumn('timecode_parameter', """REPLACE(@video_id.@streaming_service.url_timecode_template, '#time_code', $time_code)""")
         tbl.formulaColumn('clip_url', """$video_url||'&'||$timecode_parameter""", name_long='URL')
