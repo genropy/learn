@@ -10,7 +10,7 @@ class View(BaseComponent):
         r = struct.view().rows()
         r.fieldcell('title', width='20em')
         r.fieldcell('video_id')
-        r.fieldcell('topic_id', width='20em')
+        r.fieldcell('topic_id', width='20em', name='!![en]Main topic')
         r.fieldcell('time_code', width='6em')
         r.fieldcell('clip_url', format_showlinks=True, width='20em')
 
@@ -26,13 +26,6 @@ class View(BaseComponent):
                     cols=3, 
                     isDefault=True)
 
-    def th_top_barraSections(self,top):
-        top.slotToolbar('*,sections@video_id,*', 
-                        childname='superiore',
-                        gradient_from='#999', 
-                        gradient_to='#666', 
-                        _position='<bar')
-
 class ViewFromVideo(BaseComponent):
     
     def th_struct(self,struct):
@@ -40,8 +33,7 @@ class ViewFromVideo(BaseComponent):
         r.fieldcell('title', edit=True, width='20em')
         r.fieldcell('topic_id', edit=True, width='20em')
         r.fieldcell('time_code', edit=True, width='6em')
-        r.fieldcell('clip_url', cell_format='autolink', width='20em')
-
+        
 class Form(BaseComponent):
 
     def th_form(self, form):
