@@ -13,6 +13,7 @@ class Table(object):
                                 relation_name='videos', 
                                 mode='foreignkey', 
                                 onDelete='raise')
+                                
         tbl.column('external_id', name_long='!![en]External id')
         tbl.aliasColumn('host_url', '@streaming_service.host_url')
         tbl.formulaColumn('video_parameter', """REPLACE(@streaming_service.url_video_template, '#external_id', $external_id)""")
