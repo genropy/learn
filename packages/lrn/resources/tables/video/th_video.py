@@ -41,7 +41,9 @@ class Form(BaseComponent):
         fb.field('description', colspan=3, tag='simpleTextArea', height='70px')
         
         
-        bc.contentPane(region='center').dialogTableHandler(relation='@clips', viewResource='ViewFromVideo')
+        bc.contentPane(region='center').dialogTableHandler(relation='@clips', 
+                                    dialog_parentRatio=.9,
+                                    viewResource='ViewFromVideo')
 
     def th_options(self):
         return dict(dialog_height='500px', dialog_width='650px' )
