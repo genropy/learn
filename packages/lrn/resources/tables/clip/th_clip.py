@@ -34,8 +34,10 @@ class ViewFromVideo(BaseComponent):
         r = struct.view().rows()
         r.fieldcell('title', width='20em')
         r.fieldcell('topic_id', width='20em')
+        r.fieldcell('other_topics', width='20em',name='!![en]Other topics')
         r.fieldcell('time_code', width='6em')
-        
+        r.fieldcell('clip_url', format_showlinks=True, width='20em')
+
 class Form(BaseComponent):
 
     def th_form(self, form):
