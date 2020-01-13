@@ -32,9 +32,9 @@ class ViewFromVideo(BaseComponent):
     
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('title', edit=True, width='20em')
-        r.fieldcell('topic_id', edit=True, width='20em')
-        r.fieldcell('time_code', edit=True, width='6em')
+        r.fieldcell('title', width='20em')
+        r.fieldcell('topic_id', width='20em')
+        r.fieldcell('time_code', width='6em')
         
 class Form(BaseComponent):
 
