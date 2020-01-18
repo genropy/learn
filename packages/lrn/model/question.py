@@ -6,14 +6,26 @@ class Table(object):
         self.sysFields(tbl)
         tbl.column('subject',size=':60',name_long='!![en]Subject')
         tbl.column('description', name_long='!![en]Description')
-        tbl.column('html_description', name_long='!![en]Html Description')
+        #tbl.column('html_description', name_long='!![en]Html Description')
+        tbl.column('date_insert', dtype='D', name_long='!![en]Insert date')
+        tbl.column('date_approval', dtype='D', name_long='!![en]Approval date')
         tbl.column('main_topic_id',size='22', group='_', name_long='!![en]Main topic'
                     ).relation('topic.id', 
                                 relation_name='questions', 
                                 mode='foreignkey', 
                                 onDelete='raise')
+        tbl.column('main_answer_id',size='22', group='_', name_long='!![en]Main answer'
+                    ).relation('answer.id', 
+                                relation_name='questions', 
+                                mode='foreignkey', 
+                                onDelete='raise')
+
         tbl.column('user_id',size='22', group='_', name_long='!![en]User'
                     ).relation('adm.user.id', relation_name='myquestions', 
                                 mode='foreignkey', onDelete='raise')
+
+    def defaultValues(self):
+        return dict(date_insert=self.db.workdate, user_id=self.db.currentEnv.get('user_id'))
+
 
         
