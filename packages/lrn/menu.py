@@ -7,7 +7,7 @@ def config(root,application=None):
     auto.thpage("!![en]Questions", table="lrn.question")
     auto.thpage("!![en]Videos", table="lrn.video")
     auto.thpage("!![en]Clips", table="lrn.clip")
-    auto.thpage("!![en]Review Questions", table="lrn.question", viewResource='ViewTeacher')
+    auto.thpage("!![en]Review Questions", table="lrn.question", viewResource='ViewReview', formResource='FormReview')
     auto.webpage("!![en]My Page",filepath="/lrn/student" )
     auto.lookups('Lookup tables',lookup_manager='lrn')
 

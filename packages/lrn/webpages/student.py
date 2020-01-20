@@ -11,15 +11,18 @@ class GnrCustomWebPage(object):
                                                  uid=self.avatar.user_id)
         bc.data('.current_student_id', student_id)
         bc.data('.current_student_nickname', nickname)
+
         self.mainToolbar(bc.contentPane(region='top'))
-        
         center = bc.tabContainer(region='center',margin='2px')
         self.profilePane(center.contentPane(title='!![en]Profile'))
         self.askQuestion(center.contentPane(title='!![en]Ask question'))
-        self.faqPane(center.borderContainer(title='!![en]FAQ',datapath='.faq'))
-        self.lessonsPane(center.contentPane(title='!![en]Video Lessons'))
+        self.myQuestionsPane(center.contentPane(title='!![en]My Questions',
+                                                datapath='.my_questions', 
+                                                formResource='FormMyQuestion'))
+        self.questionsPane(center.borderContainer(title='!![en]Published questions',datapath='.questions'))
 
-
+        #self.myAnswersPane(center.borderContainer(title='!![en]My Answers',datapath='.my_answers'))
+        self.lessonsPane(center.contentPane(title='!![en]Videos'))
     
     def profilePane(self,pane):
         pane.thFormHandler(table='lrn.student',
@@ -33,10 +36,18 @@ class GnrCustomWebPage(object):
                             formResource = 'FormNewQuestion',
                             startKey='*newrecord*')
 
-    def faqPane(self,bc):
+    def myQuestionsPane(sel, pane):
+        pane.dialogTableHandler(table='lrn.question',
+                               condition='$user_id = :env_user_id',
+                               condition__onStart=True,
+                               addrow=False)
+
+    def myAnswersPane(sel, pane):
+        pane.dialogTableHandler(relation='@myanswers')
+
+    def questionsPane(self,bc):
         bc.data('.topics',self.db.table('lrn.topic').getHierarchicalData())
-        left = bc.contentPane(region='left',width='20%',padding='10px',
-                                splitter=True,border_right='1px solid silver')
+        left = bc.contentPane(region='left',width='20%',padding='10px', splitter=True,border_right='1px solid silver')
         left.tree(storepath='.topics',
                     labelAttribute='caption',
                     hideValues=True,
@@ -46,14 +57,16 @@ class GnrCustomWebPage(object):
         center = bc.contentPane(region='center',margin_left='5px',
                             border_left='1px solid silver')
         center.dialogTableHandler(table='lrn.question',
-            default_main_topic_id='=main.faq.topic_id',
+            default_main_topic_id='=main.questions.topic_id',
             delrow=False,
             addrow=False,
             condition="""CASE WHEN :hpkey IS NULL THEN $main_topic_id IS NULL ELSE 
                         @main_topic_id.hierarchical_pkey LIKE :hpkey || '%%'
                         END
+                        AND $approval_ts IS NOT NULL
                         """,
-            condition_hpkey='^main.faq.hierarchical_pkey')
+            condition_hpkey='^main.questions.hierarchical_pkey',
+            formResource='FormStudente')
 
 
     def lessonsPane(self,pane):
