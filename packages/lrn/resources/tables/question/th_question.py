@@ -73,7 +73,7 @@ class FormMyQuestion(Form):
         tc.contentPane(title='!![en]Answers').plainTableHandler(relation='@answers', viewResource='ViewFromQuestion')
         
     def th_options(self):
-        return dict(modal=True)
+        return dict(modal=True, dialog_windowRatio=.8)
 
 class FormStudente(Form):
 
@@ -83,6 +83,9 @@ class FormStudente(Form):
         tc.contentPane(title='!![en]Answers').plainTableHandler(relation='@answers', viewResource='ViewFromQuestion')
         pane = tc.contentPane(title='!![en]Answer this question')
         pane.div('WORK IN PROGRESS')
+
+    def th_options(self):
+        return dict(readOnly=True, dialog_windowRatio=.8)
 
 class FormReview(Form):
 
