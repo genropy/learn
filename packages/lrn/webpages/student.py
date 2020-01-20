@@ -15,14 +15,12 @@ class GnrCustomWebPage(object):
         self.mainToolbar(bc.contentPane(region='top'))
         center = bc.tabContainer(region='center',margin='2px')
         self.profilePane(center.contentPane(title='!![en]Profile'))
+        self.questionsPane(center.borderContainer(title='!![en]Published questions',datapath='.questions'))
         self.askQuestion(center.contentPane(title='!![en]Ask question'))
         self.myQuestionsPane(center.contentPane(title='!![en]My Questions',
-                                                datapath='.my_questions', 
-                                                formResource='FormMyQuestion'))
-        self.questionsPane(center.borderContainer(title='!![en]Published questions',datapath='.questions'))
-
+                                                datapath='.my_questions'))
         #self.myAnswersPane(center.borderContainer(title='!![en]My Answers',datapath='.my_answers'))
-        self.lessonsPane(center.contentPane(title='!![en]Videos'))
+        self.videosPane(center.contentPane(title='!![en]Videos'))
     
     def profilePane(self,pane):
         pane.thFormHandler(table='lrn.student',
@@ -40,10 +38,9 @@ class GnrCustomWebPage(object):
         pane.dialogTableHandler(table='lrn.question',
                                condition='$user_id = :env_user_id',
                                condition__onStart=True,
+                               formResource='FormMyQuestion',
+                               viewResource='ViewStatus',
                                addrow=False)
-
-    def myAnswersPane(sel, pane):
-        pane.dialogTableHandler(relation='@myanswers')
 
     def questionsPane(self,bc):
         bc.data('.topics',self.db.table('lrn.topic').getHierarchicalData())
@@ -69,8 +66,8 @@ class GnrCustomWebPage(object):
             formResource='FormStudente')
 
 
-    def lessonsPane(self,pane):
-        pane.div('TO DO...')
+    def videosPane(self,pane):
+        pane.dialogTableHandler(table='lrn.video', delrow=False, addrow=False, condition__onStart=True)
 
     def mainToolbar(self,pane):
         bar = pane.slotToolbar('2,pageTitle,*,logoutButton,2')
