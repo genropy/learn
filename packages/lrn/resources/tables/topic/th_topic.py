@@ -31,10 +31,9 @@ class Form(BaseComponent):
         self.videosTab(centerTc.contentPane(title='!![en]Videos'), form=form)
         self.clipsTab(centerTc.contentPane(title='!![en]Clips'), form=form)
 
-
     
     def questionsTab(self, pane, form):
-        th = pane.dialogTableHandler(relation='@questions')
+        th = pane.dialogTableHandler(relation='@questions', viewResource='ViewReview', formResource='FormReview')
         form.htree.relatedTableHandler(th,inherited=True)
 
     def videosTab(self, pane, form):
