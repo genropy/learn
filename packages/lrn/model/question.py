@@ -26,7 +26,7 @@ class Table(object):
                                 relation_name='questions', 
                                 mode='foreignkey', 
                                 onDelete='setnull')
-        tbl.formulaColumn('__protected_by_approval_ts',"""($approval_ts IS NOT NULL AND $approved_by_user_id!=:env_user_id)""",dtype='B')
+        #tbl.formulaColumn('__protected_by_approval_ts',"""($approval_ts IS NOT NULL AND $approved_by_user_id!=:env_user_id)""",dtype='B')
     
     def defaultValues(self):
         user_id = self.db.currentEnv.get('user_id')
