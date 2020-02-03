@@ -43,16 +43,25 @@ class ViewFromVideoMini(BaseComponent):
     def th_hiddencolumns(self):
         return '$video_embedded_url,$clip_url,$embedded_url'
 
-
     def th_struct(self,struct):
         r = struct.view().rows()
         r.fieldcell('time_code', width='6em')
         r.fieldcell('title', width='100%')
-        #r.fieldcell('topic_id', width='20em')
-        #r.fieldcell('other_topics', width='20em',name='!![en]Other topics')
-        
+
     def th_order(self):
         return ('time_code')
+
+class ViewMini(ViewFromVideoMini):
+    
+    def th_struct(self,struct):
+        r = struct.view().rows()
+        r.fieldcell('video_id', width='10em')
+        r.fieldcell('time_code', width='6em')
+        r.fieldcell('title', width='100%')
+        
+    def th_order(self):
+        return ('video_id,time_code')
+
 
 
 class Form(BaseComponent):
