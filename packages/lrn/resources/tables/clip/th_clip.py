@@ -38,6 +38,23 @@ class ViewFromVideo(BaseComponent):
         r.fieldcell('time_code', width='6em')
         r.fieldcell('clip_url', format_showlinks=True, width='20em')
 
+class ViewFromVideoMini(BaseComponent):
+    
+    def th_hiddencolumns(self):
+        return '$video_embedded_url,$clip_url,$embedded_url'
+
+
+    def th_struct(self,struct):
+        r = struct.view().rows()
+        r.fieldcell('time_code', width='6em')
+        r.fieldcell('title', width='100%')
+        #r.fieldcell('topic_id', width='20em')
+        #r.fieldcell('other_topics', width='20em',name='!![en]Other topics')
+        
+    def th_order(self):
+        return ('time_code')
+
+
 class Form(BaseComponent):
 
     def th_form(self, form):

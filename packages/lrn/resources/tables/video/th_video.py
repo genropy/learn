@@ -27,6 +27,15 @@ class View(BaseComponent):
                     cols=2, 
                     isDefault=True)
 
+class ViewMini(BaseComponent):
+    
+    def th_struct(self,struct):
+        r = struct.view().rows()
+        r.fieldcell('title',width='15em')
+        r.fieldcell('description',width='100%')
+    def th_order(self):
+        return 'title'
+
 class Form(BaseComponent):
 
     def th_form(self, form):

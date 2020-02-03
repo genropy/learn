@@ -20,3 +20,9 @@ class Table(object):
         tbl.aliasColumn('other_topics','@clip_alias.@topic_id.description',name_long='!![en]Other topics')
         tbl.formulaColumn('timecode_parameter', """REPLACE(@video_id.@streaming_service.url_timecode_template, '#time_code', $time_code)""")
         tbl.formulaColumn('clip_url', """$video_url||'&'||$timecode_parameter""", name_long='URL')
+        tbl.pyColumn('embedded_url', group='_')
+
+    def pyColumn_embedded_url(self, record, field):
+        z = (['0','0','0']+record['time_code'].replace('s','').replace('m',':').replace('h',':').split(':'))[-3:]
+        sec = int(z[0])*3600+int(z[1])*60+int(z[2])
+        return'{video_embedded_url}?start={sec}'.format(video_embedded_url=record['video_embedded_url'],sec=sec)

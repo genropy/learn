@@ -20,7 +20,7 @@ class GnrCustomWebPage(object):
         self.myQuestionsPane(center.contentPane(title='!![en]My Questions',
                                                 datapath='.my_questions'))
         #self.myAnswersPane(center.borderContainer(title='!![en]My Answers',datapath='.my_answers'))
-        self.videosPane(center.contentPane(title='!![en]Videos'))
+        self.videosPane(center.borderContainer(title='!![en]Videos', datapath='.videos'))
     
     def profilePane(self,pane):
         pane.thFormHandler(table='lrn.student',
@@ -67,8 +67,21 @@ class GnrCustomWebPage(object):
             formResource='FormStudente')
 
 
-    def videosPane(self,pane):
-        pane.dialogTableHandler(table='lrn.video', delrow=False, addrow=False, condition__onStart=True)
+    def videosPane(self,bc):
+        left = bc.contentPane(region='left', width='40%')
+        left.plainTableHandler(nodeId='video_th', table='lrn.video',viewResource='ViewMini',
+                               condition__onStart=True)
+
+        center = bc.borderContainer(region='center')
+        center.contentPane(region='top', height='50%').plainTableHandler(table='lrn.clip',
+                                                          nodeId='clip_th',
+                                                          condition_video_id='^#video_th.view.grid.selectedId',
+                                                          condition='$video_id=:video_id',
+                                                          viewResource='ViewFromVideoMini')
+
+        center.contentPane(region='center').iframe(src='^#clip_th.view.grid.selectedId?embedded_url',
+                    height='100%',width='100%',border='0')
+
 
     def mainToolbar(self,pane):
         bar = pane.slotToolbar('2,pageTitle,*,logoutButton,2')
