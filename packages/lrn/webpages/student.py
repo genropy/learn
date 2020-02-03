@@ -57,7 +57,8 @@ class GnrCustomWebPage(object):
             default_main_topic_id='=main.questions.topic_id',
             delrow=False,
             addrow=False,
-            condition="""CASE WHEN :hpkey IS NULL THEN $main_topic_id IS NULL ELSE 
+            condition__onStart=True,
+            condition="""CASE WHEN :hpkey IS NULL THEN TRUE ELSE 
                         @main_topic_id.hierarchical_pkey LIKE :hpkey || '%%'
                         END
                         AND $approval_ts IS NOT NULL
