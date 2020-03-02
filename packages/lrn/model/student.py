@@ -4,16 +4,18 @@ class Table(object):
     def config_db(self,pkg):
         tbl = pkg.table('student', pkey='id', name_long='!![en]Student', 
                     name_plural='!![en]Students',
-                    caption_field='name_full')
+                    caption_field='name_full',
+                    group_card='!![en]Card Info')
         self.sysFields(tbl)
-        tbl.column('name', size=':30', name_long='!![en]Name')
-        tbl.column('surname', size=':30', name_long='!![en]Surname')
+        tbl.column('name', size=':30', name_long='!![en]Name',
+                    group='card')
+        tbl.column('surname', size=':30', name_long='!![en]Surname',group='card')
         tbl.column('nickname', size=':20', 
                     name_long='!![en]Nickname', 
                     name_short='!![en]Nick')        
-        tbl.column('email', name_long='Email')
+        tbl.column('email', name_long='Email',group='card')
         
-        tbl.column('country', name_long='!![en]Country')
+        tbl.column('country', name_long='!![en]Country',group='card')
 
         tbl.column('position', name_long='!![en]Geocode')
         tbl.column('locality', name_long='!![en]Locality')

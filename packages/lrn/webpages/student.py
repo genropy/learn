@@ -72,21 +72,22 @@ class GnrCustomWebPage(object):
 
     def videosPane(self,bc):
         left = bc.borderContainer(region='left', width='40%')
-        left.contentPane(region='top', height='40%').plainTableHandler(nodeId='video_th', table='lrn.video',
-                                                                       viewResource='ViewMini',
-                                                                       #view_grid_autoSelect=True,
-                                                                       condition__onStart=True)
+        left.contentPane(region='top', height='40%'
+                    ).plainTableHandler(nodeId='video_th', table='lrn.video',
+                                        viewResource='ViewMini',
+                                        #view_grid_autoSelect=True,
+                                        condition__onStart=True)
 
         left.contentPane(region='center').plainTableHandler(table='lrn.clip',
                                                           nodeId='clip_th',
                                                           view_grid_autoSelect=True,
                                                           condition_video_id='^#video_th.view.grid.selectedId',
                                                           condition='$video_id=:video_id',
-                                                          viewResource='ViewFromVideoMini')
-                                                          #,grid_selected_embedded_url='main.videos.curr_embedded_url')
+                                                          viewResource='ViewFromVideoMini',
+                                                          grid_selected_embedded_url='main.videos.curr_embedded_url')
         bc.contentPane(region='center').iframe(height='100%',width='100%',border='0',
-                                            src='^#clip_th.view.grid.selectedId?embedded_url')
-                                            #,src ='^.curr_embedded_url')
+                                            #src='^#clip_th.view.grid.selectedId?embedded_url')
+                                            src ='^.curr_embedded_url')
 
     def videosPane2(self, frame):
         bar = frame.top.slotToolbar('10,selettore_video,*', height='20px', datapath='.current', nodeId='params')

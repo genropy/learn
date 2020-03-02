@@ -9,4 +9,6 @@ def config(root,application=None):
     auto.thpage("!![en]Review Questions", table="lrn.question", viewResource='ViewReview', formResource='FormReview')
     auto.webpage("!![en]My Page",filepath="/lrn/student" )
     auto.lookups('Lookup tables',lookup_manager='lrn')
+    auto.branch("!![en]Local tests", dir="tests",pkg='lrn')
+
 
