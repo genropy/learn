@@ -2,4 +2,5 @@
 <GenRoBag>
 	<wsgi mainpackage="lrn"/>
 	<gui css_theme='mimi'/>
+	<rms domain='learn.genropy.net' />
 </GenRoBag>
