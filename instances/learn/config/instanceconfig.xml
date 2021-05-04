@@ -10,6 +10,7 @@
 		<gnrcore_email pkgcode="gnrcore:email"/>
 		<gnrcore_docu pkgcode="gnrcore:docu"/>
 		<lrn pkgcode="lrn"/>
+		<gnrextra_wordpress pkgcode="gnrextra:wordpress"/>
 	</packages>
 
 	<authentication pkg="gnrcore:sys">
