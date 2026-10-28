@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
 def config(root,application=None):
-    auto = root.branch("!![en]Learn")
-    auto.thpage("!![en]Students", table="lrn.student")
-    auto.thpage("!![en]Topics", table="lrn.topic")
-    auto.thpage("!![en]Videos", table="lrn.video")
-    auto.thpage("!![en]Clips", table="lrn.clip")
-    auto.thpage("!![en]Review Questions", table="lrn.question", viewResource='ViewReview', formResource='FormReview')
-    auto.webpage("!![en]My Page",filepath="/lrn/student" )
-    auto.lookups('Lookup tables',lookup_manager='lrn')
-    auto.branch("!![en]Local tests", dir="tests",pkg='lrn')
-
+    learn = root.branch("!![en]Learn")
+    learn.thpage("!![en]Students", table="lrn.student")
+    learn.thpage("!![en]Topics", table="lrn.topic")
+    learn.thpage("!![en]Videos", table="lrn.video")
+    learn.thpage("!![en]Clips", table="lrn.clip")
+    learn.thpage("!![en]Contest Subscriptions", table="lrn.contest_subscription")
+    learn.thpage("!![en]Review Questions", table="lrn.question", viewResource='ViewReview', formResource='FormReview')
+    learn.webpage("!![en]My Page",filepath="/lrn/student" )
+    learn.lookups('Lookup tables',lookup_manager='lrn')
+    learn.branch("!![en]Local tests", dir="tests",pkg='lrn')
 

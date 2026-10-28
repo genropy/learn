@@ -5,11 +5,12 @@
 	<packages>
 		<gnrcore_sys pkgcode="gnrcore:sys"/>
 		<gnrcore_adm pkgcode="gnrcore:adm"/>
-		<gnrcore_test15 pkgcode="gnrcore:test15"/>
+		<gnrcore_test pkgcode="gnrcore:test"/>
 		<gnr_it_glbl pkgcode="gnr_it:glbl"/>
 		<gnrcore_email pkgcode="gnrcore:email"/>
 		<gnrcore_docu pkgcode="gnrcore:docu"/>
 		<lrn pkgcode="lrn"/>
+		<gnrextra_wordpress pkgcode="gnrextra:wordpress"/>
 	</packages>
 
 	<authentication pkg="gnrcore:sys">
